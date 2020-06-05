@@ -93,6 +93,12 @@ pub fn is(stream: Stream) -> bool {
     unsafe { msys_tty_on(fd) }
 }
 
+/// Tests whether a stream is a tty for op-tee (which it never is).
+#[cfg(target_os = "optee")]
+pub fn is(stream: Stream) -> bool {
+    false
+}
+
 /// returns true if this is _not_ a tty
 pub fn isnt(stream: Stream) -> bool {
     !is(stream)

@@ -62,6 +62,12 @@ pub fn is(stream: Stream) -> bool {
 }
 
 /// returns true if this is a tty
+#[cfg(target_os = "icecap")]
+pub fn is(_stream: Stream) -> bool {
+    true
+}
+
+/// returns true if this is a tty
 #[cfg(windows)]
 pub fn is(stream: Stream) -> bool {
     use winapi::um::winbase::{
